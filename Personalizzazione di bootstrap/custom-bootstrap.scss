@@ -1,0 +1,33 @@
+// Qui vanno applicate le nostre modifiche
+
+// La prima cosa da fare è importare i file necessari che andremo a modificare
+@import "./scss/functions"; // In questo caso per modificare variables serve anche il foglio functions
+@import "./scss/variables";
+
+// Andiamo a modificare i colori. Andiamo a vedere nel file variables
+// la mappa $theme-colors da cui andremo a modificare i colori
+// Creaiamo una nuova mappa
+
+$new-theme-colors: (
+  "primary": yellow,
+  "secondary": black,
+  "colore-bello": hwb(120 26% 16% / 0.338),
+);
+
+// ora dobbiamo andare a FONDERE la nostra mappa con quella originale.
+// map-merge()
+
+$theme-colors: map-merge($theme-colors, $new-theme-colors);
+
+// Esempio di modifica degli space
+$new-spacers: (
+  6: $spacer * 4,
+  7: $spacer * 5,
+);
+
+$spacers: map-merge($spacers, $new-spacers);
+
+// Andiamo poi a reimportare il file base di bootstrap,
+// le cose che abbiamo scritto
+
+@import "./scss/bootstrap.scss";
